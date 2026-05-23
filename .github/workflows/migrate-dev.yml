@@ -1,0 +1,16 @@
+# .github/workflows/migrate-dev.yml
+name: Migrate Dev DB
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'supabase/migrations/**'
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+      - run: supabase db push --db-url ${{ secrets.DEV_DB_URL }}
