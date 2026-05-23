@@ -1,0 +1,1 @@
+-- No-op migration to register the development migration workflow as a GitHub status check.
